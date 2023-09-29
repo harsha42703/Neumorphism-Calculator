@@ -55,7 +55,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 1000px;
+    height: 800px;
     width: 100vw;
     transition: all ease-in-out 0.3s;
 }
