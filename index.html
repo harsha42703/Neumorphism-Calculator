@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="body">
+        <div class="con1">
+            <h2><span class="coloured br">Neumorphic</span class='txt'> Calculator</h2>
+            <p class="land-para">Step into the future of digital calculators with our Neumorphism-inspired calculator. This sleek and modern design not only offers a visually pleasing experience but also provides you with powerful mathematical capabilities. With its intuitive user interface and random accent color themes. Elevate your calculations and make each computation a delightful journey with our Neumorphism calculator.</p>
+        </div>
+        <div class="wrapper">
+            <form class="content">
+                <div class="display">
+                    <input class="kl" type="text" name="display">
+                </div>
+                <div class="button-row">
+                    <input class="coloured kl" type="button" value="AC" onclick="display.value = '' ">
+                    <input class="coloured kl" type="button" value="DE" onclick="display.value = display.value.toString().slice(0,-1) ">
+                    <input class="coloured kl" type="button" value="/" onclick="display.value += '/' ">
+                    <input class="coloured kl" type="button" value="." onclick="display.value += '.' ">
+                </div>
+                <div class="button-row">
+                    <input type="button" class="kl"  class="kl"value="7" onclick="display.value += '7' ">
+                    <input type="button" class="kl" value="8" onclick="display.value += '8' ">
+                    <input type="button" class="kl" value="9" onclick="display.value += '9' ">
+                    <input class="coloured kl" type="button" value="x" onclick="display.value += '*' ">
+                </div>
+                <div class="button-row">
+                    <input type="button" class="kl" value="4" onclick="display.value += '4' ">
+                    <input type="button" class="kl" value="5" onclick="display.value += '5' ">
+                    <input type="button" class="kl" value="6" onclick="display.value += '6' ">
+                    <input class="coloured kl" type="button" value="-" onclick="display.value += '-' ">
+                </div>
+        <div class="button-row">
+            <input type="button" class="kl" value="1" onclick="display.value += '1' ">
+            <input type="button" class="kl" value="2" onclick="display.value += '2' ">
+            <input type="button" class="kl" value="3" onclick="display.value += '3' ">
+            <input class="coloured kl" type="button" value="+" onclick="display.value += '+' ">
+        </div>
+        <div class="button-row">
+            <input type="button" class="kl" value="00" onclick="display.value += '00' ">
+            <input type="button" class="kl" value="0" onclick="display.value += '0' ">
+            <button class="coloured kl l" type="button" value="=" onclick="display.value = eval(display.value) ">=</button>
+        </div>
+    </form>
+        </div>
+        <div class="copyright">
+            <p>&copy;created by Harsha</p>
+        </div>
+    </div>  
+    <script>
+        const coloredButtons = document.querySelectorAll('.coloured');
+        const body = document.querySelector('.body');
+    
+        function getRandomLightColor() {
+            const letters = '89ABCDEF'; 
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * letters.length)];
+            }
+            return color;
+        }
+    
+        function changeBackgroundColor() {
+            const randomColor = getRandomLightColor();
+            coloredButtons.forEach(button => {
+                button.style.backgroundColor = randomColor;
+            });
+            body.style.background = `linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, ${randomColor} 100%)`;
+        }
+    
+        coloredButtons.forEach(button => {
+            button.addEventListener('click', changeBackgroundColor);
+        });
+    
+        const colorPicker = document.getElementById('pick');
+        const coloredBoxes = document.querySelectorAll('.coloured');
+    
+        colorPicker.addEventListener('input', (event) => {
+            const selectedColor = event.target.value;
+            coloredBoxes.forEach(box => {
+                box.style.backgroundColor = selectedColor;
+            });
+            body.style.background = `linear-gradient(0deg,  ${selectedColor} 100%), hsla(186, 33%, 94%, 1) 0%`;
+
+        });
+    </script>
+</body>
+</html> 
+
